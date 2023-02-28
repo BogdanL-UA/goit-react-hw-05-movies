@@ -4,6 +4,7 @@ import { ColorRing } from 'react-loader-spinner';
 import { getTrendingMovies } from 'components/api/api';
 
 import MoviesList from 'components/modules/Movies list/MoviesList';
+import styles from './homePage.module.css';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -26,11 +27,9 @@ const HomePage = () => {
     fetchTrendingMovies();
   }, []);
 
-  console.log(movies);
-
   return (
     <>
-      <h1>Trending today</h1>
+      <h1 className={styles.title}>Trending today</h1>
       <MoviesList items={movies} />
 
       {loading && (

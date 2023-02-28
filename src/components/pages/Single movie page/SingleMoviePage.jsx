@@ -45,6 +45,7 @@ const SingleMoviePage = () => {
       <div className={styles.movieWrapper}>
         {movie?.poster_path !== undefined ? (
           <img
+            className={styles.moviePoster}
             alt=""
             src={`https://image.tmdb.org/t/p/w400${movie?.poster_path}`}
           />
@@ -52,32 +53,48 @@ const SingleMoviePage = () => {
           `Movie poster image`
         )}
         <div className={styles.movieInfo}>
-          <h1>{movie?.title}</h1>
-          <p>User Score: {(movie?.vote_average * 10).toFixed(2)}%</p>
-          <h2>Overview</h2>
-          <p>{movie?.overview}</p>
-          <h2>Genres</h2>
-          <ul>
+          <h1 className={styles.movieTitle}>{movie?.title}</h1>
+          <p className={styles.movieInfoContent}>
+            User Score: {(movie?.vote_average * 10).toFixed(2)}%
+          </p>
+          <h2 className={styles.movieTitle}>Overview</h2>
+          <p className={styles.movieInfoContent}>{movie?.overview}</p>
+          <h2 className={styles.movieTitle}>Genres</h2>
+          <ul className={styles.movieGenres}>
             {movie?.genres !== undefined
-              ? movie.genres.map(({ id, name }) => <li key={id}>{name}</li>)
+              ? movie.genres.map(({ id, name }) => (
+                  <li className={styles.movieInfoContent} key={id}>
+                    {name}
+                  </li>
+                ))
               : `No genres`}
           </ul>
-          <p>Additional information</p>
-
-          <ul>
-            <li>
-              <Link state={{ from }} to={`/movies/${id}/cast`}>
-                Cast
-              </Link>
-            </li>
-            <li>
-              <Link state={{ from }} to={`/movies/${id}/reviews`}>
-                Reviews
-              </Link>
-            </li>
-            <Outlet />
-          </ul>
         </div>
+      </div>
+      <div>
+        <h3 className={styles.movieTitle}>Additional information</h3>
+
+        <ul className={styles.movieAdditionalInfoList}>
+          <li className={styles.additionalInfoItem}>
+            <Link
+              className={styles.movieInfoContent}
+              state={{ from }}
+              to={`/movies/${id}/cast`}
+            >
+              Cast
+            </Link>
+          </li>
+          <li className={styles.additionalInfoItem}>
+            <Link
+              className={styles.movieInfoContent}
+              state={{ from }}
+              to={`/movies/${id}/reviews`}
+            >
+              Reviews
+            </Link>
+          </li>
+          <Outlet />
+        </ul>
       </div>
     </>
   );

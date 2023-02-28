@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieCast } from 'components/api/api';
 
+import styles from './cast.module.css'
+
 const Cast = () => {
   const { id } = useParams();
   const [castMovie, setCastMovie] = useState([]);
@@ -41,7 +43,7 @@ const Cast = () => {
   return (
     <>
       {elements.length > 0 ? (
-        <ul>{elements}</ul>
+        <ul className={styles.castList}>{elements}</ul>
       ) : (
         <p>Sorry, we don't have any cast for this movie.</p>
       )}

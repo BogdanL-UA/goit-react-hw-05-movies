@@ -1,9 +1,12 @@
+import Notiflix from 'notiflix';
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getSearchMovie } from 'components/api/api';
 
 import MoviesList from 'components/modules/Movies list/MoviesList';
+
+import styles from './moviesPage.module.css';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -18,10 +21,9 @@ const MoviesPage = () => {
     const fetchPosts = async () => {
       try {
         const { results } = await getSearchMovie(search);
-
         setMovies([...results]);
       } catch (error) {
-        console.log(error.message);
+        Notiflix.Notify.failure(`${error.message}`, { timeout: 5000 });
       }
     };
 
@@ -32,27 +34,35 @@ const MoviesPage = () => {
     e => {
       e.preventDefault();
       const { search } = e.currentTarget.elements;
-      setSearchParams({ search: search.value.toLowerCase() });
-      e.currentTarget.reset();
+      if (search.value.trim()) {
+        setSearchParams({ search: search.value.toLowerCase() });
+        e.currentTarget.reset();
+      }
     },
     [setSearchParams]
   );
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="search"
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movies"
-          required
-        />
-        <button type="submit">Search</button>
-      </form>
+      <div className={styles.Searchbar}>
+        <form className={styles.SearchForm} onSubmit={handleSubmit}>
+          <button type="submit" className={styles.searchFormButton}>
+            <span className={styles.searchFormButtonLabel}>Search</span>
+          </button>
 
-      <MoviesList movies={movies} />
+          <input
+            name="search"
+            className={styles.SearchFormInput}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search movies"
+            required
+          />
+        </form>
+      </div>
+
+      <MoviesList items={movies} />
     </>
   );
 };

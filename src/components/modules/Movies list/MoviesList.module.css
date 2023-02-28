@@ -1,3 +1,12 @@
-.trendsMoviesList{
+.moviesList{
   display: block;
+  margin-left: 50px;
+  padding: 10px;
+}
+.moviesListItem{
+  padding: 5px;
+}
+.link{
+  font-size: 20px;
+  font-weight: 500;
 }

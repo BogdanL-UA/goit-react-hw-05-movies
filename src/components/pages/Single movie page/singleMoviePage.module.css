@@ -3,11 +3,37 @@
   margin-top: 20px;
   margin-left: 50px;
 }
+.moviePoster{
+  height: fit-content;
+  width: fit-content;
+}
 .movieInfo{
 margin-left: 40px;
 }
+.movieTitle{
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: gainsboro;
+}
+.movieInfoContent{
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.movieGenres{
+  list-style: none;
+}
+.movieAdditionalInfoList{
+  list-style: none;
+}
+.additionalInfoItem{
+  padding: 10px;
+  font-size: larger;
+    font-weight: bold;
+}
 .button{
   margin-left: 50px;
+  margin-top: 20px;
     padding: 5px;
 }
 .button:hover{

@@ -13,10 +13,10 @@ export const getTrendingMovies = async () => {
   return data;
 };
 
-export const getSearchMovie = async (q = '') => {
+export const getSearchMovie = async (query = '') => {
   const { data } = await instance.get(`/search/movie`, {
     params: {
-      q,
+      query,
     },
   });
 
