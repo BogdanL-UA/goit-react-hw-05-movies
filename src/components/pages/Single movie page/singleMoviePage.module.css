@@ -1,0 +1,18 @@
+.movieWrapper{
+  display: flex;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.movieInfo{
+margin-left: 40px;
+}
+.button{
+  margin-left: 50px;
+    padding: 5px;
+}
+.button:hover{
+  background-color: cadetblue;
+  color: aliceblue;
+  width: 80px;
+  height: 30px;
+}

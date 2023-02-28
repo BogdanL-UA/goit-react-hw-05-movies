@@ -1,0 +1,21 @@
+.navbar{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: gainsboro;
+  margin-bottom: 20px;
+}
+.navbarItem{
+  padding: 20px 20px;
+}
+.navbarItemLink{
+text-decoration: none;
+font-weight: 600;
+font-size: 20px;
+color: brown;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbarItemLink:global(.active){
+  color: red;
+}
